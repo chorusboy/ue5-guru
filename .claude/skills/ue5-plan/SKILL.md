@@ -163,20 +163,28 @@ MyClassName
   Extension seam: [where future variants or additions attach]
 ```
 
-After the layout, call out software engineering patterns explicitly:
+After the layout, call out software engineering patterns explicitly.
+
+**Pattern reference:** https://en.wikipedia.org/wiki/Software_design_pattern
+Use this as the authoritative source for pattern names, definitions, and
+classification (creational / structural / behavioral). When identifying a
+pattern in a design, verify the name and definition against this reference
+before stating it — especially for less common patterns where naming varies.
 
 > **Patterns applied:**
-> - **Strategy** — `UMySystem` holds a `TArray<UMyBehavior*>`; each behavior
->   implements `Execute()`; the system delegates without knowing the concrete type.
->   Extending to a new behavior means adding a new subclass, not modifying the system.
-> - **Template Method** — `UMyBaseAbility::Activate` defines the sequence;
->   subclasses fill in `OnActivate()`. The engine uses the same structure in
->   `UGameplayAbility`.
+> - **Strategy** (behavioral) — `UMySystem` holds a `TArray<UMyBehavior*>`;
+>   each behavior implements `Execute()`; the system delegates without knowing
+>   the concrete type. Extending to a new behavior means adding a new subclass,
+>   not modifying the system. Engine analogue: `UGameplayAbility` family.
+> - **Template Method** (behavioral) — `UMyBaseAbility::Activate` defines the
+>   sequence; subclasses fill in `OnActivate()`. The engine uses the same
+>   structure in `UGameplayAbility::ActivateAbility`.
 > - [etc.]
 
-For each pattern: name it, show where the engine already uses it in this domain
-(or that it doesn't, if this is custom), explain the implementer's role within it,
-and state what it makes easy and what it makes harder.
+For each pattern: name it with its category, show where the engine already uses
+it in this domain (or note that it doesn't, if this is custom territory), explain
+the implementer's role within it, and state what it makes easy and what it makes
+harder.
 
 **Drawbacks section — required:**
 
